@@ -9,12 +9,16 @@ int counter;
 pthread_mutex_t l;
 int main()
 {
+int i,n;
 pthread_mutex_init(&l, NULL);
-pthread_t thread1, thread2;
-pthread_create(&thread1, NULL, fun, NULL);
-pthread_create(&thread2, NULL, fun, NULL);
-pthread_join(thread1, NULL);
-pthread_join(thread2, NULL);
+printf("\nEnter No.of students waiting\n");
+scanf("%d",&n);
+for(i=0;i<n;i++)
+{
+pthread_t thread[i];
+pthread_create(&thread[i], NULL, fun, NULL);
+pthread_join(thread[i], NULL);
+}
 }
 void *fun()
 {
